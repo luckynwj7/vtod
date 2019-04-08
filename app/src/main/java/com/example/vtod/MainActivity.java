@@ -1,5 +1,5 @@
 package com.example.vtod;
-
+//luckynwj7@naver.com
 import android.annotation.TargetApi;
 import android.content.DialogInterface;
 import android.content.Intent;
