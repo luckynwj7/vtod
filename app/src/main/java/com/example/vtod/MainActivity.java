@@ -1,5 +1,4 @@
 package com.example.vtod;
-//toast file
 
 import android.annotation.TargetApi;
 import android.content.DialogInterface;
