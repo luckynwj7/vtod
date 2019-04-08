@@ -45,9 +45,10 @@ public class MainActivity extends AppCompatActivity
     //public native void ConvertRGBtoGray(long matAddrInput, long matAddrResult);
     public native long loadCascade(String cascadeFileName);
     public native void detect(long cascadeClassifier_face,
-                              long cascadeClassifier_eye, long matAddrInput, long matAddrResult);
+                              long cascadeClassifier_eye, long cascadeClassifier_fullbody, long matAddrInput, long matAddrResult);
     public long cascadeClassifier_face = 0;
     public long cascadeClassifier_eye = 0;
+    public long cascadeClassifier_fullbody = 0;
 
 
     private final Semaphore writeLock = new Semaphore(1);
@@ -99,13 +100,17 @@ public class MainActivity extends AppCompatActivity
     private void read_cascade_file(){
         copyFile("haarcascade_frontalface_alt.xml");
         copyFile("haarcascade_eye_tree_eyeglasses.xml");
-
-        Log.d(TAG, "read_cascade_file:");
+        copyFile("haarcascade_fullbody.xml");
 
         cascadeClassifier_face = loadCascade( "haarcascade_frontalface_alt.xml");
         Log.d(TAG, "read_cascade_file:");
 
+
         cascadeClassifier_eye = loadCascade( "haarcascade_eye_tree_eyeglasses.xml");
+        Log.d(TAG, "read_cascade_file:");
+
+        cascadeClassifier_eye = loadCascade( "haarcascade_fullbody.xml");
+        Log.d(TAG, "read_cascade_file:");
     }
 
 
@@ -252,7 +257,7 @@ public class MainActivity extends AppCompatActivity
             // ConvertRGBtoGray(matInput.getNativeObjAddr(), matResult.getNativeObjAddr());
 //            Core.flip(matInput, matInput, 0);
 
-            detect(cascadeClassifier_face, cascadeClassifier_eye, matInput.getNativeObjAddr(),
+            detect(cascadeClassifier_face, cascadeClassifier_eye, cascadeClassifier_fullbody, matInput.getNativeObjAddr(),
                     matResult.getNativeObjAddr());
         } catch (InterruptedException e) {
             e.printStackTrace();
