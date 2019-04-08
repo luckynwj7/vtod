@@ -1,5 +1,6 @@
 package com.example.vtod;
-//sjlya
+//toast file
+
 import android.annotation.TargetApi;
 import android.content.DialogInterface;
 import android.content.Intent;
