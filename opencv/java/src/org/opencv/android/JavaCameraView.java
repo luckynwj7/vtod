@@ -244,8 +244,10 @@ public class JavaCameraView extends CameraBridgeViewBase implements PreviewCallb
         Method downPloymorphic;
         try {
             downPloymorphic = camera.getClass().getMethod("setDisplayOrientation", new Class[] { int.class} );
-            if(downPloymorphic!=null)
-                downPloymorphic.invoke(camera, new Object[] {angle});
+            if(downPloymorphic!=null) {
+                downPloymorphic.invoke(camera, new Object[]{angle});
+
+            }
         }
         catch (Exception e1)
         {

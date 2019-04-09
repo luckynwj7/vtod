@@ -160,7 +160,7 @@ public class MainActivity extends AppCompatActivity
         mOpenCvCameraView.setCvCameraViewListener(this);
         // 기존 코드 주석처리
         //mOpenCvCameraView.setCameraIndex(0); // front-camera(1),  back-camera(0)
-        mOpenCvCameraView.setCameraIndex(0); // front-camera(1),  back-camera(0)
+        mOpenCvCameraView.setCameraIndex(1); // front-camera(1),  back-camera(0)
 
         mLoaderCallback.onManagerConnected(LoaderCallbackInterface.SUCCESS);
 
