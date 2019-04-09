@@ -123,7 +123,7 @@ Java_com_example_vtod_MainActivity_loadCascade(JNIEnv *env, jobject instance,
 extern "C"
 JNIEXPORT void JNICALL
 Java_com_example_vtod_MainActivity_detect(JNIEnv *env, jobject instance,
-                                          jlong cascadeClassifier_face, jlong cascadeClassifier_eye, jlong haarcascade_fullbody,
+                                          jlong cascadeClassifier_face, jlong cascadeClassifier_eye, jlong casdClassifier_fullbody,
                                           jlong matAddrInput, jlong matAddrResult) {
 
     // TODO
@@ -221,7 +221,7 @@ Java_com_example_vtod_CameraView_loadCascade(JNIEnv *env, jobject instance,
 }extern "C"
 JNIEXPORT void JNICALL
 Java_com_example_vtod_CameraView_detect(JNIEnv *env, jobject instance, jlong cascadeClassifier_face,
-                                        jlong cascadeClassifier_eye, jlong matAddrInput,
+                                        jlong cascadeClassifier_eye, jlong cascadeClassfier_fullbody, jlong matAddrInput,
                                         jlong matAddrResult) {
 
     // TODO
