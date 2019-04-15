@@ -123,7 +123,7 @@ Java_com_example_vtod_MainActivity_loadCascade(JNIEnv *env, jobject instance,
 extern "C"
 JNIEXPORT void JNICALL
 Java_com_example_vtod_MainActivity_detect(JNIEnv *env, jobject instance,
-                                          jlong cascadeClassifier_face, jlong cascadeClassifier_eye, jlong haarcascade_fullbody,
+                                          jlong cascadeClassifier_face, jlong cascadeClassifier_eye, jlong cascadeClassifier_fullbody,
                                           jlong matAddrInput, jlong matAddrResult) {
 
 
@@ -152,7 +152,7 @@ Java_com_example_vtod_MainActivity_detect(JNIEnv *env, jobject instance,
 
 //   new code, orientation change
     Point2f img_center(img_resize.cols*.5f, img_resize.rows*.5f);
-    Mat  rotationMat = getRotationMatrix2D(img_center, 90.f, 1.f);
+    Mat  rotationMat = getRotationMatrix2D(img_center, 270.f, 1.f);
     Mat rotatedImage;
     warpAffine(img_resize, rotatedImage, rotationMat, img_resize.size());
 
