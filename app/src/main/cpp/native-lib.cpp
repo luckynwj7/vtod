@@ -150,7 +150,7 @@ Java_com_example_vtod_MainActivity_detect(JNIEnv *env, jobject instance,
 
     float resizeRatio = resize(img_gray, img_resize, 640);
 
-
+//   new code, orientation change
     Point2f img_center(img_resize.cols*.5f, img_resize.rows*.5f);
     Mat  rotationMat = getRotationMatrix2D(img_center, 90.f, 1.f);
     Mat rotatedImage;
