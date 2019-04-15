@@ -123,10 +123,9 @@ Java_com_example_vtod_MainActivity_loadCascade(JNIEnv *env, jobject instance,
 extern "C"
 JNIEXPORT void JNICALL
 Java_com_example_vtod_MainActivity_detect(JNIEnv *env, jobject instance,
-                                          jlong cascadeClassifier_face, jlong cascadeClassifier_eye, jlong casdClassifier_fullbody,
+                                          jlong cascadeClassifier_face, jlong cascadeClassifier_eye, jlong haarcascade_fullbody,
                                           jlong matAddrInput, jlong matAddrResult) {
 
-    // TODO
 
 
     Mat &img_input = *(Mat *) matAddrInput;
@@ -152,9 +151,16 @@ Java_com_example_vtod_MainActivity_detect(JNIEnv *env, jobject instance,
     float resizeRatio = resize(img_gray, img_resize, 640);
 
 
-    //-- Detect faces
+    Point2f img_center(img_resize.cols*.5f, img_resize.rows*.5f);
+    Mat  rotationMat = getRotationMatrix2D(img_center, 90.f, 1.f);
+    Mat rotatedImage;
+    warpAffine(img_resize, rotatedImage, rotationMat, img_resize.size());
 
-    ((CascadeClassifier *) cascadeClassifier_face)->detectMultiScale( img_resize, faces, 1.1, 2, 0|CASCADE_SCALE_IMAGE, Size(30, 30) );
+
+    //-- Detect faces
+    ((CascadeClassifier *) cascadeClassifier_face)->detectMultiScale( rotatedImage, faces, 1.1, 2, 0|CASCADE_SCALE_IMAGE, Size(30, 30) );
+
+//    ((CascadeClassifier *) cascadeClassifier_face)->detectMultiScale( img_resize, faces, 1.1, 2, 0|CASCADE_SCALE_IMAGE, Size(30, 30) );
 
 
 
@@ -188,7 +194,6 @@ Java_com_example_vtod_MainActivity_detect(JNIEnv *env, jobject instance,
 
         std::vector<Rect> eyes;
 
-
         //-- In each face, detect eyes
 
         ((CascadeClassifier *) cascadeClassifier_eye)->detectMultiScale( faceROI, eyes, 1.1, 2, 0 |CASCADE_SCALE_IMAGE, Size(30, 30) );
@@ -221,7 +226,7 @@ Java_com_example_vtod_CameraView_loadCascade(JNIEnv *env, jobject instance,
 }extern "C"
 JNIEXPORT void JNICALL
 Java_com_example_vtod_CameraView_detect(JNIEnv *env, jobject instance, jlong cascadeClassifier_face,
-                                        jlong cascadeClassifier_eye, jlong cascadeClassfier_fullbody, jlong matAddrInput,
+                                        jlong cascadeClassifier_eye, jlong matAddrInput,
                                         jlong matAddrResult) {
 
     // TODO
