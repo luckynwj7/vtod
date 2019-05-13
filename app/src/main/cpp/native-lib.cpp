@@ -66,7 +66,7 @@ float resize(Mat img_src, Mat &img_resize, int resize_width){
 
 extern "C"
 JNIEXPORT jlong JNICALL
-Java_com_example_vtod_MainActivity_loadCascade(JNIEnv *env, jobject instance,
+Java_com_example_vtod_CameraViewActivity_loadCascade(JNIEnv *env, jobject instance,
                                                jstring cascadeFileName_) {
     //const char *cascadeFileName = env->GetStringUTFChars(cascadeFileName_, 0);
 
@@ -122,8 +122,8 @@ Java_com_example_vtod_MainActivity_loadCascade(JNIEnv *env, jobject instance,
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_example_vtod_MainActivity_detect(JNIEnv *env, jobject instance,
-                                          jlong cascadeClassifier_face, jlong cascadeClassifier_eye, jlong cascadeClassifier_fullbody,
+Java_com_example_vtod_CameraViewActivity_detect(JNIEnv *env, jobject instance,
+                                          jlong cascadeClassifier_face, jlong cascadeClassifier_eye,
                                           jlong matAddrInput, jlong matAddrResult) {
 
 

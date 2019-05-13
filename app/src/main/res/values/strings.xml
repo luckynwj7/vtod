@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">vtod</string>
     <string name="btnname"> 완료 </string>
+    <string name="btnCameraOn"> 카메라 켜기 </string>
+    <string name="btnExit"> 종료 </string>
+    <string name="btnDefault"> 미지정 </string>
 </resources>
